@@ -7,6 +7,7 @@ use App\Http\Requests\MentorRequest;
 use App\Models\User;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\PersonnelRequest;
+use App\Http\Requests\AdminRequest;
 use App\Models\Personnel;
 use App\Models\Mentor;
 use Illuminate\Support\Facades\Hash;
@@ -35,6 +36,13 @@ class UserController extends Controller
      
         return $response;
         
+    }
+
+    public function registeradmin(AdminRequest $request)
+    {
+        $validated = $request->validated();
+        $user = User::create($validated);
+        return $user;
     }
   
     public function registerceo(UsersRequest $request)
@@ -70,6 +78,17 @@ class UserController extends Controller
 
         return $personnel;
     }
+    public function updatementor(MentorRequest $request, string $id)
+    {
+        $validated = $request->validated();
+
+        $mentor = Mentor::findOrFail($id);
+
+        $mentor-> update($validated);
+                    
+
+        return $mentor;
+    }
 
     public function showpersonnel($id)
     {
@@ -77,6 +96,11 @@ class UserController extends Controller
         return $personnel;
     }
 
+    public function fetchmentor($id)
+    {
+        $mentors = Mentor::where('id', $id)->get();
+        return $mentors;
+    }
 
     public function showmentor()
     {

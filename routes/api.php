@@ -25,10 +25,14 @@ use App\Http\Controllers\MentorScheduleController;
 Route::controller(UserController::class)->group(function (){
     Route::get('/user',         'index');
     Route::post('/userlogin',         'login')->name('user.login');;
+    Route::post('/registeradmin',         'registeradmin');
+    Route::post('/registerpersonnel',         'registerpersonnel');
     Route::post('/registerceo',         'registerceo');
     Route::post('/registermentor',         'registermentor');
     Route::put('/updatepersonnel/{id}',         'updatepersonnel');
+    Route::put('/updatementor/{id}',         'updatementor');
     Route::get('/personnel/{id}',    'showpersonnel');
+    Route::get('/fetchmentor/{id}',         'fetchmentor');
     Route::get('/showmentor', 'showmentor');
 });
 

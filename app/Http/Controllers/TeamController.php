@@ -131,6 +131,7 @@ public function updatemember(MemberRequest $request, $member_id)
         $tbi = new TBI();
         $tbi->tbi_name = $request->input('tbi_name');
         $tbi->tbi_logo = $logoPath;
+        $tbi->color = $request->input('color');
         $tbi->save();
     
         return response()->json(['message' => 'TBI Added successfully'], 201);

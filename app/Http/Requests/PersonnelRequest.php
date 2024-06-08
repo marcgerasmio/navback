@@ -22,6 +22,7 @@ class PersonnelRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'role_id'=>'required|int|max:255',
             'name'=>'required|string|max:255',
             'email'=>'required|string|max:255',
             'password'=>'required|string|max:255',

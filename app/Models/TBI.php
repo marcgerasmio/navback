@@ -29,5 +29,6 @@ class TBI extends Model
     protected $fillable = [
       'tbi_name',
       'tbi_logo',
+      'color',
     ]; 
 }
